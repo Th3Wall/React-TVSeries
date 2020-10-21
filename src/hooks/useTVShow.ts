@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import Axios from 'axios';
-import { Series } from '../model/series';
+import { Series, Show } from '../model/series';
 
 export function useTVShow () {
+
+    const [ details, setDetails ] = useState<Show | null>(null);
     const [ result, setResult ] = useState<Series[]>([]);
 
     const searchHandler = (text: string) => {
@@ -11,11 +13,17 @@ export function useTVShow () {
     }
 
     const movieClickHandler = (series: Series) => {
-        window.open(series.show.url);
+        setDetails(series.show);
+    }
+
+    const closeModal = () => {
+        setDetails(null);
     }
 
     return {
         series: result,
+        details,
+        closeModal,
         search: searchHandler,
         movieClick: movieClickHandler
     }

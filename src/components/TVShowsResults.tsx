@@ -1,6 +1,5 @@
 import React from 'react'
 import css from '../App.module.css';
-import { NoImage } from '../App';
 import { Series } from '../model/series';
 
 export interface TVShowsResultsProps {
@@ -37,3 +36,7 @@ export const TVShowsResults: React.FC<TVShowsResultsProps> = ({result, movieClic
 
 export default TVShowsResults;
 
+
+export const NoImage = () => {
+    return <div className={css.noImage}></div>;
+}
